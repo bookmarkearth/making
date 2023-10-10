@@ -44,7 +44,7 @@ public class IndexMakingFolderServiceImpl extends BookmarkMakeBasicService imple
 	   			try{
 	   				BookmarkFolder  bookmarkFolder= new BookmarkFolder();
 
-	   				//校验文件夹内容，过滤重复
+
 	   				long id=rs.getLong("id");
 	   				String folder=rs.getString("folder");
 	   				
@@ -60,6 +60,7 @@ public class IndexMakingFolderServiceImpl extends BookmarkMakeBasicService imple
 	   				//文件夹是否有风险，包括：色情、政治、赌博、版权
 	   				Boolean illegal=IndexConditionUtils.isHitted(urlList,prepareData,folder,3);
 	   				
+	   				//校验文件夹内容，过滤重复
 	   				Boolean isSame=analysisFolderSimilarity(keyTemplate,filterSet);
 	   				if(!isSame && !illegal){
 	   					
